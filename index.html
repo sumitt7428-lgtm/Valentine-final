@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Card</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ffd6e0,#ff8fab);
+font-family:cursive;
+overflow:hidden;
+}
+
+/* Scene */
+.scene{
+width:95%;
+max-width:850px;
+height:520px;
+perspective:2000px;
+position:relative;
+}
+
+/* Card */
+.card{
+width:100%;
+height:100%;
+position:relative;
+transform-style:preserve-3d;
+transition:1s;
+}
+
+/* Cover */
+.cover{
+position:absolute;
+width:100%;
+height:100%;
+background:#fff0f5;
+border-radius:15px;
+border:6px dashed #ff4d6d;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+transform-origin:left;
+transition:1s;
+backface-visibility:hidden;
+z-index:5;
+}
+
+.cover h1{
+font-size:34px;
+color:#ff3366;
+margin-bottom:20px;
+}
+
+.open-btn{
+position:absolute;
+right:20px;
+bottom:20px;
+padding:10px 18px;
+background:#ff4d6d;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* Inside */
+.inside{
+position:absolute;
+width:100%;
+height:100%;
+background:white;
+border-radius:15px;
+padding:20px;
+display:flex;
+opacity:0;
+transition:1s;
+z-index:2;
+}
+
+/* Left page */
+.left{
+width:50%;
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:10px;
+}
+
+.box{
+border:2px dashed #ff4d6d;
+border-radius:10px;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:8px;
+font-size:14px;
+}
+
+/* Right page */
+.right{
+width:50%;
+padding:10px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+font-size:14px;
+}
+
+.next-btn{
+align-self:flex-end;
+padding:6px 14px;
+background:#ff4d6d;
+color:white;
+border:none;
+border-radius:15px;
+cursor:pointer;
+}
+
+/* Final Page */
+.final{
+position:absolute;
+width:100%;
+height:100%;
+background:#fff0f5;
+border-radius:15px;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+font-size:22px;
+padding:20px;
+opacity:0;
+transition:1s;
+z-index:10;
+}
+
+/* States */
+.open .cover{
+transform:rotateY(-180deg);
+}
+
+.open .inside{
+opacity:1;
+}
+
+.show-final{
+opacity:1;
+}
+
+/* Mobile */
+@media(max-width:768px){
+.scene{height:650px;}
+.inside{flex-direction:column;}
+.left,.right{width:100%;}
+.right{margin-top:15px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+<div class="card" id="card">
+
+<!-- FRONT -->
+<div class="cover">
+<h1>Happy Valentine Day 💖</h1>
+<p>Handmade With Love</p>
+<button class="open-btn" onclick="openCard()">Open Card</button>
+</div>
+
+<!-- INSIDE -->
+<div class="inside" id="insidePage">
+
+<div class="left">
+<div class="box">👶 Cute Baby</div>
+<div class="box">Thanku for being with me 💕</div>
+<div class="box">🌹 Rose</div>
+<div class="box">thanku for every good memories and making me laugh 💖</div>
+</div>
+
+<div class="right">
+<div>
+Thanku for everything it's been 2 years ..we face everything..bhaut cheeze hui..but thanku for staying..I don't want to fight with u..neither u want I know..I know u've so so so many problems with me..but Im really trying and want to make it work..I love u thanku for everything happy valentine ❤️
+</div>
+<button class="next-btn" onclick="showFinal()">Move Forward ➜</button>
+</div>
+
+</div>
+
+<!-- FINAL PAGE -->
+<div class="final" id="finalPage">
+💌 Be beautifully ready as usual for tomorrow Date.<br><br>
+Be on time 11:30pm ❤️
+</div>
+
+</div>
+</div>
+
+<script>
+function openCard(){
+document.getElementById("card").classList.add("open");
+}
+
+function showFinal(){
+document.getElementById("finalPage").classList.add("show-final");
+}
+</script>
+
+</body>
+</html>
